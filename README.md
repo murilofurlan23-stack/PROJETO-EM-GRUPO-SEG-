@@ -1,102 +1,53 @@
-# PROJETO-EM-GRUPO-SEG-
- Sistema de Barbearia
+ # Sistema de Barbearia
 
- Sobre o projeto
+## 📌 Situação-Problema
+Gerenciar os horários, atendimentos e catálogo de serviços de uma barbearia em planilhas manuais ou anotações em papel frequentemente gera conflitos de agendamento, desorganização na gestão de clientes e falta de controle financeiro sobre os serviços prestados pelos profissionais.
 
-Sistema desenvolvido para facilitar o gerenciamento de uma barbearia, permitindo organizar clientes, barbeiros, serviços e agendamentos de forma simples e eficiente.
+## 🎯 Objetivo
+O objetivo do projeto é fornecer uma solução backend simples, eficiente e orientada a objetos para gerenciar o fluxo principal de uma barbearia. O sistema automatiza o cadastro de clientes e profissionais, a prestação de serviços, a realização e finalização de agendamentos, além do controle de status de contas de usuários.
 
- Principais características
- Cadastro de clientes
-  
-   Nome
-  CPF
-   Telefone
-   E-mail
- Data de nascimento
+---
 
- Cadastro de barbeiros
-  
-   Nome
-   CPF
-   Telefone
-   Especialidade
-   Disponibilidade
+## 🛠️ Tecnologias Utilizadas
+- **Linguagem:** PHP 8.x
+- **Front-end:** HTML5 e CSS3 (para renderização visual das saídas)
+- **Versionamento:** Git e GitHub
 
- Cadastro de serviços
-  
-   Corte de cabelo
-   Corte de barba
-   Corte + barba
-   Sobrancelha
-   Acabamento
-   Outros serviços oferecidos pela barbearia
+---
 
- Agendamento
-  
-Seleção do cliente
-   Seleção do barbeiro
-   Escolha do serviço
-   Data e horário
-   Status do agendamento
+## ⚙️️ Principais Funcionalidades
+- **Gestão de Pessoas:** Cadastro e controle de dados cadastrais para Clientes e Barbeiros.
+- **Gestão de Serviços:** Cadastro de serviços oferecidos com controle de preços e duração em minutos.
+- **Agendamento de Atendimentos:** Associação entre Cliente, Barbeiro e Serviço com controle de data/hora e status (Pendente / Concluído).
+- **Controle de Status:** Capacidade de desativar clientes e finalizar atendimentos prestados.
 
-Controle de valores
-  
-   Preço dos serviços
-   Valor total do atendimento
-Registro de pagamentos
+---
 
- Gerenciamento de atendimentos
-  
-  Agendamentos futuros
-   Atendimentos realizados
-   Cancelamentos
-   Histórico dos clientes
+## 📐 Principais Conceitos de POO Aplicados
+O projeto foi modelado utilizando os pilares cruciais da Programação Orientada a Objetos:
 
- Sistema de usuários
-  
-   Login
-   Senha
-   Controle de acesso
+- **Herança (`extends`):**
+  - A classe base `Pessoa` encapsula atributos comuns (`nome`, `telefone`, `email`).
+  - As classes `Cliente` e `Barbeiro` estendem `Pessoa`, herdando e estendendo suas características.
+- **Encapsulamento (`private` / `protected` / `getters` e `setters`):**
+  - Todos os atributos das classes utilizam modificadores de acesso fechados (`private`).
+  - Acesso e alteração seguros por métodos públicos (ex: `getNome()`, `setPreco()`).
+- **Polimorfismo e Sobrescrita de Métodos (`Override`):**
+  - O método `exibirDados()` é definido na classe pai `Pessoa` e sobrescrito nas subclasses `Cliente` e `Barbeiro` chamando `parent::exibirDados()` para reaproveitamento de código.
+- **Composição / Agregação de Objetos:**
+  - A classe `Agendamento` recebe e gerencia instâncias de `Cliente`, `Barbeiro` e `Servico` para compor uma reserva completa.
+- **Validação e Regras de Negócio:**
+  - O método `setPreco()` na classe `Servico` valida e impede a atribuição de valores negativos.
 
- Dashboard
-  
-  Quantidade de clientes
-  Quantidade de barbeiros
-   Agendamentos do dia
-   Serviços realizados
-   Faturamento
+---
 
- Tecnologias utilizadas
+## 📂 Organização Geral do Projeto
 
- PHP
- Git e GitHub
-
- Objetivo
-
-O objetivo do sistema é organizar as principais atividades de uma barbearia, facilitando o gerenciamento dos clientes, profissionais, serviços, horários e pagamentos.
-
- Projeto em grupo
-
-Projeto desenvolvido em equipe como atividade acadêmica, utilizando conceitos de Programação Orientada a Objetos, banco de dados, desenvolvimento web e versionamento com Git/GitHub.
-
-CONCEITOS DE POO
-
-Classe: é o modelo ou molde utilizado para criar objetos.
-Objeto: é algo criado a partir de uma classe. Ele possui características e pode realizar ações.
-Atributo: representa as características ou informações de um objeto, como nome, idade, preço ou saldo.
-Método: representa uma ação que um objeto pode realizar, como cadastrar, calcular, alterar ou consultar.
-Encapsulamento: protege os dados de uma classe e controla como eles podem ser acessados ou modificados.
-Herança: permite que uma classe aproveite características e comportamentos de outra classe.
-Polimorfismo: permite que diferentes objetos respondam de maneiras diferentes a uma mesma ação ou método.
-Abstração: consiste em mostrar apenas as informações importantes e esconder detalhes desnecessários.
-Construtor: é utilizado para inicializar um objeto quando ele é criado.
-Associação: representa uma relação entre duas ou mais classes.
-Agregação: é uma relação em que um objeto possui outro, mas os dois podem existir separadamente.
-Composição: é uma relação mais forte entre objetos, em que o objeto dependente está ligado ao objeto principal.
-Modificadores de acesso: determinam quem pode acessar atributos e métodos de uma classe, como público, privado e protegido.
-Interface: define um conjunto de métodos que uma classe deve implementar.
-Classe abstrata: é uma classe que serve como base para outras classes e pode possuir métodos que precisam ser implementados pelas classes filhas.
-Encapsulamento: proteger.
-Herança: reutilizar.
-Polimorfismo: diferentes comportamentos.
-Abstração: simplificar.
+```text
+.
+├── Pessoa.php       # Classe base contendo atributos e métodos comuns a pessoas
+├── Cliente.php      # Subclasse de Pessoa com preferências e status de conta
+├── Barbeiro.php     # Subclasse de Pessoa com especialidades do profissional
+├── Servico.php      # Classe responsável pela gestão de serviços e preços
+├── Agendamento.php  # Classe principal para criação e gestão de atendimentos
+└── index.php        # Script principal que executa e demonstra o funcionamento do sistema
